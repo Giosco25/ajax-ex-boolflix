@@ -1,0 +1,32 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: black;
+}
+header{
+    background-color: grey;
+    width: 100%;
+    height: 100px;
+    position: fixed;
+    padding: 20px 30px;
+}
+.header-left{
+    float: left;
+}
+.header-right{
+    float: right;
+}
+.header-left h1{
+    color:white;
+}
+.header-right{
+    padding: 13px 30px;
+}
+#risultato{
+    background-color: red;
+    height: calc(100% - 100px);
+}
