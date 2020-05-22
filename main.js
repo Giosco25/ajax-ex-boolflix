@@ -12,10 +12,13 @@ $(document).ready(function() {
         'url':'https://api.themoviedb.org/3/search/movie',
         'method': 'GET',
         'data': {
-
-        } // fine data
-        'success': function(data){
-            console.log(data);
+           'api_key':'76070dffeb41350240b137d672a13be3',
+           'query': 'batman'
+       }, // fine data
+        'success': function(risposta){
+            console.log(risposta);
+            var dati_film = risposta.results
+            console.log(dati_film);
         }, // fine success
         'error': function(){
             console.log('errore');
