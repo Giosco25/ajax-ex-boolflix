@@ -13,6 +13,8 @@ header{
     height: 100px;
     position: fixed;
     padding: 20px 30px;
+    top: 0;
+    left: 0;
 }
 .header-left{
     float: left;
@@ -29,4 +31,12 @@ header{
 #risultato{
     background-color: red;
     height: calc(100% - 100px);
+    padding-top: 100px;
+}
+#risultato ul{
+    font-size: 18px;
+    color: white;
+    padding-left: 20px;
+    margin-top: 20px;
+    list-style-type: none;
 }
