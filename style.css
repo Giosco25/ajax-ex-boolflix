@@ -6,6 +6,7 @@
 
 body{
     background-color: black;
+    padding-top: 80px;
 }
 header{
     background-color: grey;
@@ -28,15 +29,17 @@ header{
 .header-right{
     padding: 13px 30px;
 }
-#risultato{
-    background-color: red;
-    height: calc(100% - 100px);
-    padding-top: 100px;
-}
+
 #risultato ul{
     font-size: 18px;
     color: white;
     padding-left: 20px;
     margin-top: 20px;
     list-style-type: none;
+}
+ul li{
+    margin-bottom: 10px;
+    padding-top: 10px;
+    font-family: 'ABeeZee', sans-serif;
+
 }

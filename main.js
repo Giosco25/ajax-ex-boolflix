@@ -58,19 +58,19 @@ function controllo_film(film){
     var voto_film = film.vote_average;
     console.log(voto_film);
      // creo li dentro ul del film
-    var lista_titolo_film = '<li>'+ 'Il titolo del film è :' + titolo_film + '</li>';
+    var lista_titolo_film = '<li>'+ 'Il titolo del film è : ' + titolo_film + '</li>';
     // scrivo in pagina il titolo del film
     $('#risultato ul').append(lista_titolo_film);
     // metto dentro lì il titolo originale del film
-    var lista_titolo_originale = '<li>'+ ' Il titolo originale del film è :' + titolo_originale + '</li>';
+    var lista_titolo_originale = '<li>'+ ' Il titolo originale del film è : ' + titolo_originale + '</li>';
     // scrivo in pagina il titolo originale
     $('#risultato ul').append(lista_titolo_originale);
     // metto dentro li la lingua del film
-    var lista_lingua_film = '<li>'+ 'La lingua del film è :' + lingua_film + '</li>';
+    var lista_lingua_film = '<li>'+ 'La lingua del film è : ' + lingua_film + '</li>';
     // scrivo in pagina la lingua del film
     $('#risultato ul').append(lista_lingua_film);
     // metto dentro lì il voto che ha preso il film
-    var lista_voto_film = '<li>'+'Il voto del film è :' + voto_film + '</li>';
+    var lista_voto_film = '<li>'+'Il voto del film è : ' + voto_film + '</li>';
     // scrivo in pagina il voto del film
     $('#risultato ul').append(lista_voto_film);
 }
