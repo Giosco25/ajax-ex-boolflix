@@ -81,3 +81,9 @@ function controllo_film(film){
     var card_generata = template_function(recupero_risultati);
     $('#risultato').append(card_generata);
 } // fine funzione controllo film
+
+//********* MILESTONE PARTE 2 *********//
+// Allarghiamo poi la ricerca anche alle serie tv. Con la stessa azione di ricerca
+// dovremo prendere sia i film che corrispondono alla query, sia le serie tv, stando
+// attenti ad avere alla fine dei valori simili (le serie e i film hanno campi nel JSON di
+// risposta diversi, simili ma non sempre identici
