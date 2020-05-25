@@ -66,9 +66,9 @@ function controllo_film(film){
      'titolo_originale': film.original_title,
      'voto': stelle,
      'lingua': function(){
-         var flag_language = ['it','en','de','fr']
+         var flag_language = ['it','en','de','fr'];
          if (flag_language.includes(film.original_language)) {
-             return "<img src='img/it.jpg'>"
+             return "<img src='img/flag_" + film.original_language + ".jpg'>";
             }else {
              return film.original_language;
          }
@@ -76,7 +76,7 @@ function controllo_film(film){
 
  }
 
- console.log(flag_language);
+
 
     var card_generata = template_function(recupero_risultati);
     $('#risultato').append(card_generata);
