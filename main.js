@@ -1,9 +1,3 @@
-// Predisporre quindi un layout molto semplice con una barra di ricerca e un pulsante: al click sul pulsante fare partire una chiamata ajax a tmdb per recuperare i film che corrispondo alla query di ricerca inserita dall'utente.
-// Ciclare i risultati e per ogni film restituito, stamparne in pagina:
-// titolo
-// titolo originale
-// lingua
-// voto
 // https://api.themoviedb.org/3/search/movie
 $(document).ready(function() {
     // fare click sul pulsante
@@ -11,6 +5,10 @@ $(document).ready(function() {
         // testo inserito dall'utente
         var testo_utente = $('#ricerca').val();
         console.log(testo_utente);
+        // resetto l'input testuale
+        $('#ricerca').val('');
+        // svuoto il contenitore dei risultat
+        $('#risultato ul').empty();
     // richiesta API
     $.ajax({
         'url':'https://api.themoviedb.org/3/search/movie',
@@ -42,35 +40,44 @@ function ciclo_film(risultato){
         console.log(film_correnti);
         controllo_film(film_correnti);
     } // fine ciclo for
-}
+}// fine funzione ciclo film
 
 function controllo_film(film){
+    var html_template = $('#card-template').html();
+    var template_function = Handlebars.compile(html_template);
     // recupero il title del film
-    var titolo_film = film.title;
-    console.log(titolo_film);
-    // recupero il titolo originale
-    var titolo_originale = film.original_title;
-    console.log(titolo_originale);
-    // recupero la lingua del film
-    var lingua_film = film.original_language;
-    console.log(lingua_film);
-    // recupero il voto ricevuto dal film
-    var voto_film = film.vote_average;
-    console.log(voto_film);
-     // creo li dentro ul del film
-    var lista_titolo_film = '<li>'+ 'Il titolo del film è : ' + titolo_film + '</li>';
-    // scrivo in pagina il titolo del film
-    $('#risultato ul').append(lista_titolo_film);
-    // metto dentro lì il titolo originale del film
-    var lista_titolo_originale = '<li>'+ ' Il titolo originale del film è : ' + titolo_originale + '</li>';
-    // scrivo in pagina il titolo originale
-    $('#risultato ul').append(lista_titolo_originale);
-    // metto dentro li la lingua del film
-    var lista_lingua_film = '<li>'+ 'La lingua del film è : ' + lingua_film + '</li>';
-    // scrivo in pagina la lingua del film
-    $('#risultato ul').append(lista_lingua_film);
-    // metto dentro lì il voto che ha preso il film
-    var lista_voto_film = '<li>'+'Il voto del film è : ' + voto_film + '</li>';
-    // scrivo in pagina il voto del film
-    $('#risultato ul').append(lista_voto_film);
-}
+    var voto_intero = Math.ceil ((film.vote_average / 2));
+    console.log(voto_intero);
+    var stelle = '';
+    // for (var i = 0; i < voto_intero; i++) {
+    // stella += "<i class='fas fa-star'></i>";
+    // console.log(stella);
+    for (var i = 0; i < 5; i++) {
+        if (i <= voto_intero) {
+            stelle += "<i class='fas fa-star'></i>";
+            console.log(stelle);
+        }else {
+            stelle += "<i class='far fa-star'></i>";
+        }
+
+ }
+ var recupero_risultati = {
+     'titolo': film.title,
+     'titolo_originale': film.original_title,
+     'voto': stelle,
+     'lingua': function(){
+         var flag_language = ['it','en','de','fr']
+         if (flag_language.includes(film.original_language)) {
+             return "<img src='img/it.jpg'>"
+            }else {
+             return film.original_language;
+         }
+     }
+
+ }
+
+ console.log(flag_language);
+
+    var card_generata = template_function(recupero_risultati);
+    $('#risultato').append(card_generata);
+} // fine funzione controllo film

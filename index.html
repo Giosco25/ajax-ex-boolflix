@@ -6,6 +6,9 @@
         <link rel="stylesheet" href="style.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <link href="https://fonts.googleapis.com/css2?family=ABeeZee&display=swap" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+        <script src="https://kit.fontawesome.com/7f25fd8a42.js"
+        crossorigin="anonymous"></script>
     </head>
     <body>
     <header>
@@ -13,16 +16,22 @@
             <h1>Boolflix</h1>
         </div>
         <div class="header-right">
-            <input type="text" id="ricerca">
+            <input type="text" id="ricerca" placeholder="Cerca...">
             <button id="pulsante-ricerca">Cerca</button>
         </div>
     </header>
-    <main id="risultato">
+    <main id="risultato"></main>
 
+    <script id="card-template" type="text/x-handlebars-template">
         <ul>
-        
+          <li>{{ titolo }}</li>
+          <li>{{ titolo_originale }}</li>
+          <li>{{ lingua }}</li>
+          <li>{{{ voto }}}</li>
         </ul>
-    </main>
+        <img src="" alt="">
+   </script>
+
     <script src="main.js" charset="utf-8"></script>
     </body>
 </html>
