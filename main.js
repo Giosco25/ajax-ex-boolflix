@@ -45,14 +45,13 @@ function ciclo_film(risultato){
 function controllo_film(film){
     var html_template = $('#card-template').html();
     var template_function = Handlebars.compile(html_template);
-    // recupero il title del film
+    // trasformo il voto in un numero da 1 a 5
     var voto_intero = Math.ceil ((film.vote_average / 2));
     console.log(voto_intero);
+    // creo una var stelle vuota per mettere all'interno le icone
     var stelle = '';
-    // for (var i = 0; i < voto_intero; i++) {
-    // stella += "<i class='fas fa-star'></i>";
-    // console.log(stella);
-    for (var i = 0; i < 5; i++) {
+    // ciclo per 5 volte i voti
+    for (var i = 1; i <= 5; i++) {
         if (i <= voto_intero) {
             stelle += "<i class='fas fa-star'></i>";
             console.log(stelle);
@@ -61,23 +60,24 @@ function controllo_film(film){
         }
 
  }
+ // recupero tutti i risultati
  var recupero_risultati = {
      'titolo': film.title,
      'titolo_originale': film.original_title,
      'voto': stelle,
      'lingua': function(){
+         // metto in un array le lingue che ho a disposizione
          var flag_language = ['it','en','de','fr'];
+         // creo un if per vedere le lingue originali sono incluse dentro il mio array
          if (flag_language.includes(film.original_language)) {
-             return "<img src='img/flag_" + film.original_language + ".jpg'>";
+             return "<img src='img/flag_" + film.original_language + ".png'>";
             }else {
+            // titolo originale
              return film.original_language;
          }
      }
 
  }
-
-
-
     var card_generata = template_function(recupero_risultati);
     $('#risultato').append(card_generata);
 } // fine funzione controllo film
