@@ -25,14 +25,13 @@
      <!-- Usiamo il template per generare la card -->
     <script id="card-template" type="text/x-handlebars-template">
         <ul>
-          <li>Poster:{{ poster }}</li>
+          <li class="poster_film">{{{ poster }}}</li>
           <li>Titolo: {{ titolo }}</li>
           <li>Titolo originale: {{ titolo_originale }}</li>
           <li>Lingua: {{{ lingua }}}</li>
           <li>Voto: {{{ voto }}}</li>
           <li>Tipo: {{{ tipo }}}</li>
         </ul>
-        <img src="" alt="">
    </script>
 
     <script src="main.js" charset="utf-8"></script>

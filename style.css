@@ -76,3 +76,7 @@ img{
     height: 22px;
     margin-left: 4px;
 }
+.poster_film img{
+    height: 100%;
+    width: 170px;
+}
