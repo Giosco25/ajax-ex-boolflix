@@ -12,6 +12,7 @@ var img_url = 'https://image.tmdb.org/t/p/w185';
     $('#pulsante-ricerca').click(function(){
             chiamata_api();
  }); // fine click
+
 function chiamata_api(){
     // testo inserito dall'utente
     var testo_utente = $('#ricerca').val();
@@ -36,6 +37,7 @@ $.ajax({
         console.log('errore');
     }
 }); //fine ajax
+
 // richiamo ajax per le serie tv
 $.ajax({
     'url': api_url + 'search/tv',
@@ -53,10 +55,12 @@ $.ajax({
     }
 }); //fine ajax
 } // fine function chiamata_api
-function ciclo_serie(risposta_api_tv, tipo){
 
+// faccio una funzione per vedere i risultati delle serie TV
+function ciclo_serie(risposta_api_tv, tipo){
     var dati_serie = risposta_api_tv.results
     console.log(dati_serie);
+    // ciclo tutti i dati che arrivano dall'API
     for (var i = 0; i < dati_serie.length; i++) {
         // salvo in una variabile i film che mi sta ciclando
         var serie_corrente = dati_serie[i]
@@ -81,9 +85,8 @@ function ciclo_film(risultato,tipo){
 
 function controllo_film(film, tipologia){
     console.log(film.poster_path);
-
+    // salvo i poster dei film dentro una variabile
     var poster_film = film.poster_path;
-
     var html_template = $('#card-template').html();
     var template_function = Handlebars.compile(html_template);
     // trasformo il voto in un numero da 1 a 5
@@ -114,6 +117,7 @@ function controllo_film(film, tipologia){
     // titolo originale serie TV
     original_title = film.original_name;
    }// fine else
+
  // recupero tutti i risultati
  var recupero_risultati = {
      'poster': img_url + poster_film,
@@ -131,7 +135,7 @@ function controllo_film(film, tipologia){
             // titolo originale
              return film.original_language;
          } // fine else
-     }// fine lingua
+     }// fine 'lingua'
   } // var recupero_risultati
     var card_generata = template_function(recupero_risultati);
     $('#risultato').append(card_generata);
