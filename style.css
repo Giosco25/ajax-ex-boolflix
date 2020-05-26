@@ -5,8 +5,8 @@
 }
 
 body{
-    background-color: black;
     padding-top: 80px;
+    background-image: url("img/sfondo_boolflix.jpg");
 }
 header{
     background-color: grey;
@@ -23,19 +23,39 @@ header{
 .header-right{
     float: right;
 }
+#ricerca{
+    font-size: 15px;
+    padding: 2px 3px 2px;
+}
+#pulsante-ricerca{
+    background-color: red;
+    color: white;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 18px;
+}
 .header-left h1{
     color:white;
+    padding-top: 8px;
 }
 .header-right{
     padding: 13px 30px;
 }
-
+#risultato{
+    display: flex;
+    flex-wrap: wrap;
+}
 #risultato ul{
     font-size: 18px;
     color: white;
     padding-left: 20px;
     margin-top: 20px;
     list-style-type: none;
+    border: 1px solid white;
+    width: 212px;
+    margin-right: 25px;
+    margin-top: 35px;
+    background-color: black;
 }
 ul li{
     margin-bottom: 10px;
@@ -44,5 +64,9 @@ ul li{
 
 }
 i{
-    color:white;
+    color:gold;
+}
+img{
+    height: 22px;
+    margin-left: 4px;
 }

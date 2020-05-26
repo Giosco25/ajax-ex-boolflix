@@ -9,7 +9,7 @@ $(document).ready(function() {
         $('#ricerca').val('');
         // svuoto il contenitore dei risultat
         $('#risultato ul').empty();
-    // richiesta API
+    // richiesta API per i film
     $.ajax({
         'url':'https://api.themoviedb.org/3/search/movie',
         'method': 'GET',
@@ -19,7 +19,24 @@ $(document).ready(function() {
        }, // fine data
         'success': function(risposta){
             console.log(risposta);
-            ciclo_film(risposta);
+            ciclo_film(risposta,'film');
+            ciclo_serie(risposta, 'film');
+        }, // fine success
+        'error': function(){
+            console.log('errore');
+        }
+    }); //fine ajax
+    // richiamo ajax per le serie tv
+    $.ajax({
+        'url':'https://api.themoviedb.org/3/search/tv',
+        'method': 'GET',
+        'data': {
+           'api_key':'76070dffeb41350240b137d672a13be3',
+           'query': testo_utente
+       }, // fine data
+        'success': function(risposta){
+            console.log(risposta.results);
+            ciclo_serie(risposta, 'serie tv');
         }, // fine success
         'error': function(){
             console.log('errore');
@@ -27,9 +44,20 @@ $(document).ready(function() {
     }); //fine ajax
 }); // fine click
 
-}); // fine document ready
+function ciclo_serie(risposta_api_tv, tipo){
 
-function ciclo_film(risultato){
+    var dati_serie = risposta_api_tv.results
+    console.log(dati_serie);
+    for (var i = 0; i < dati_serie.length; i++) {
+        // salvo in una variabile i film che mi sta ciclando
+        var serie_corrente = dati_serie[i]
+        console.log(serie_corrente);
+        controllo_film(serie_corrente, tipo);
+    } // fine ciclo for
+}
+
+
+function ciclo_film(risultato,tipo){
     // salvo in una variabile i risultati dei film
     var dati_film = risultato.results
     console.log(dati_film);
@@ -38,11 +66,11 @@ function ciclo_film(risultato){
         // salvo in una variabile i film che mi sta ciclando
         var film_correnti = dati_film[i]
         console.log(film_correnti);
-        controllo_film(film_correnti);
+        controllo_film(film_correnti,tipo);
     } // fine ciclo for
 }// fine funzione ciclo film
 
-function controllo_film(film){
+function controllo_film(film, tipologia){
     var html_template = $('#card-template').html();
     var template_function = Handlebars.compile(html_template);
     // trasformo il voto in un numero da 1 a 5
@@ -58,13 +86,20 @@ function controllo_film(film){
         }else {
             stelle += "<i class='far fa-star'></i>";
         }
-
  }
+   if (tipologia == 'film') {
+       var titolo_film = film.title;
+       var titolo_originale_film = film.original_title ;
+   }else {
+       var titolo_film = film.name ;
+       var titolo_originale_film = film.original_name;
+   }
  // recupero tutti i risultati
  var recupero_risultati = {
      'titolo': film.title,
      'titolo_originale': film.original_title,
      'voto': stelle,
+     'tipo': tipologia,
      'lingua': function(){
          // metto in un array le lingue che ho a disposizione
          var flag_language = ['it','en','de','fr'];
@@ -77,10 +112,14 @@ function controllo_film(film){
          }
      }
 
- }
+
+  }
     var card_generata = template_function(recupero_risultati);
     $('#risultato').append(card_generata);
-} // fine funzione controllo film
+ } // fine funzione controllo film
+}); // fine document ready
+
+
 
 //********* MILESTONE PARTE 2 *********//
 // Allarghiamo poi la ricerca anche alle serie tv. Con la stessa azione di ricerca
