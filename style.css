@@ -26,6 +26,8 @@ header{
     font-size: 15px;
     padding: 2px 3px 2px;
     border: 2px solid black;
+    padding-top: 3px;
+    padding-bottom: 3px;
 }
 #pulsante-ricerca{
     color: white;

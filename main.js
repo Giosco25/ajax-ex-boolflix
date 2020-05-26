@@ -2,12 +2,13 @@ $(document).ready(function() {
 
 var api_url = 'https://api.themoviedb.org/3/';
 var api_key = '76070dffeb41350240b137d672a13be3';
+var img_url = 'https://image.tmdb.org/t/p/w185';
 
     $('#ricerca').keyup(function(event){
         if (event.which == 13) {
             chiamata_api();
         }
-    })
+    })// fine evento keyup
     $('#pulsante-ricerca').click(function(){
             chiamata_api();
  }); // fine click
@@ -79,6 +80,10 @@ function ciclo_film(risultato,tipo){
 }// fine funzione ciclo film
 
 function controllo_film(film, tipologia){
+    console.log(film.poster_path);
+
+    var poster_film = film.poster_path;
+
     var html_template = $('#card-template').html();
     var template_function = Handlebars.compile(html_template);
     // trasformo il voto in un numero da 1 a 5
@@ -94,18 +99,24 @@ function controllo_film(film, tipologia){
         }else {
             stelle += "<i class='far fa-star'></i>";
         }
- }
+ }// fine cilo for
+// imposto 2 variabile vuote per poi sovrascrivere il nome film o serie TV
  var title ='';
  var original_title = '';
-   if (tipologia == 'film') {
-        title = film.title;
-        original_title = film.original_title ;
-   }else {
-        title = film.name;
-        original_title = film.original_name;
-   }
+  if (tipologia == 'film') {
+    // titolo film
+    title = film.title;
+    // titolo originale film
+    original_title = film.original_title ;
+  }else {
+   // titolo serie TV
+    title = film.name;
+    // titolo originale serie TV
+    original_title = film.original_name;
+   }// fine else
  // recupero tutti i risultati
  var recupero_risultati = {
+     'poster': img_url + poster_film,
      'titolo': title,
      'titolo_originale': original_title,
      'voto': stelle,
@@ -119,11 +130,9 @@ function controllo_film(film, tipologia){
             }else {
             // titolo originale
              return film.original_language;
-         }
-     }
-
-
-  }
+         } // fine else
+     }// fine lingua
+  } // var recupero_risultati
     var card_generata = template_function(recupero_risultati);
     $('#risultato').append(card_generata);
  } // fine funzione controllo film
