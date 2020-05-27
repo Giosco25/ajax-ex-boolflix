@@ -54,7 +54,7 @@ header{
 #risultato ul{
     font-size: 18px;
     color: white;
-    padding-left: 20px;
+    padding-left: 15px;
     margin-top: 20px;
     list-style-type: none;
     border: 1px solid white;
@@ -62,6 +62,7 @@ header{
     margin-right: 25px;
     margin-top: 35px;
     background-color: black;
+    height: 100%;
 }
 ul li{
     margin-bottom: 10px;
@@ -72,7 +73,7 @@ ul li{
 i{
     color:gold;
 }
-img{
+li img{
     height: 22px;
     margin-left: 4px;
 }

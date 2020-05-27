@@ -34,7 +34,7 @@ $.ajax({
    }, // fine data
     'success': function(risposta){
         console.log(risposta);
-        ciclo_serie_film(risposta, 'film')
+        ciclo_serie_film(risposta, 'film');
     }, // fine success
     'error': function(){
         console.log('errore');
@@ -116,6 +116,7 @@ function controllo_film(film, tipologia){
      'titolo_originale': original_title,
      'voto': stelle,
      'tipo': tipologia,
+     'overview': film.overview,
      'lingua': function(){
          // metto in un array le lingue che ho a disposizione
          var flag_language = ['it','en','de','fr'];
@@ -133,14 +134,15 @@ function controllo_film(film, tipologia){
     // usando handlebars stampo su html tutta la card che viene generata tramite le funzioni
     $('#risultato').append(card_generata);
  } // fine funzione controllo film
-}); // fine document ready
-function genera_poster(poster, img_url) {
-    // dichiaro una variabile con valore no poster iniziale così se non entra nel l'if perchè non c'è il poster, spunta immagine non disponibile
-    var img_poster = '<img src="img/no_poster.png" alt="">';
-    if (poster) {
-        //se il poster c'è allora inseriscilo dentro il tag img nel template
-        img_poster = '<img src="'+ img_url + poster + '" alt="">'
-    }
-    return img_poster;
 
-}
+ function genera_poster(poster, img_url) {
+     // dichiaro una variabile con valore no poster iniziale così se non entra nel l'if perchè non c'è il poster, spunta immagine non disponibile
+     var img_poster = '<img src="img/no_poster.png" alt="">';
+     if (poster) {
+         //se il poster c'è allora inseriscilo dentro il tag img nel template
+         img_poster = '<img src="'+ img_url + poster + '" alt="">'
+     }
+     return img_poster;
+
+ }
+}); // fine document ready
