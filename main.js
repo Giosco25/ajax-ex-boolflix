@@ -4,7 +4,7 @@ var api_url = 'https://api.themoviedb.org/3/';
 // mi salvo in una variabile la key_API personale così posso utilizzare in Ajax la variabile
 var api_key = '76070dffeb41350240b137d672a13be3';
 // mi salvo in una variabile l'immagine o post che poi prenderò dalla API
-var img_url = 'https://image.tmdb.org/t/p/w185';
+var img_url = 'https://image.tmdb.org/t/p/w342';
  // evento Invio tastiera
     $('#ricerca').keyup(function(event){
         if (event.which == 13) {
