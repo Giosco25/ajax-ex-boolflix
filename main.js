@@ -137,7 +137,7 @@ function controllo_film(film, tipologia){
 
  function genera_poster(poster, img_url) {
      // dichiaro una variabile con valore no poster iniziale così se non entra nel l'if perchè non c'è il poster, spunta immagine non disponibile
-     var img_poster = '<img src="img/no_poster.png" alt="">';
+     var img_poster = '<img src="img/poster-not-available.jpg" alt="">';
      if (poster) {
          //se il poster c'è allora inseriscilo dentro il tag img nel template
          img_poster = '<img src="'+ img_url + poster + '" alt="">'
