@@ -128,6 +128,7 @@ function controllo_film(film, tipologia){
          //    // ritorna la lingua originale senza bandierina
          //     return film.original_language;
          // } // fine else
+         // la variabile dentro switch è quella che devo controllare
          switch (film.original_language) {
              case 'it': return "<img src='img/flag_it.png'>";
                 break;
