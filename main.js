@@ -121,13 +121,25 @@ function controllo_film(film, tipologia){
          // metto in un array le lingue che ho a disposizione
          var flag_language = ['it','en','de','fr'];
          // creo un if per vedere le lingue originali sono incluse dentro il mio array
-         if (flag_language.includes(film.original_language)) {
-             // se sono incluse mi ritorna l'immagine della bandierina con la nazione corrente
-             return "<img src='img/flag_" + film.original_language + ".png'>";
-            }else {
-            // ritorna la lingua originale senza bandierina
-             return film.original_language;
-         } // fine else
+         // if (flag_language.includes(film.original_language)) {
+         //     // se sono incluse mi ritorna l'immagine della bandierina con la nazione corrente
+         //     return "<img src='img/flag_" + film.original_language + ".png'>";
+         //    }else {
+         //    // ritorna la lingua originale senza bandierina
+         //     return film.original_language;
+         // } // fine else
+         switch (film.original_language) {
+             case 'it': return "<img src='img/flag_it.png'>";
+                break;
+            case 'en': return "<img src='img/flag_" + film.original_language + ".png'>";
+                break;
+            case 'de': return "<img src='img/flag_de.png'>";
+                break;
+            case 'fr': return "<img src='img/flag_" + film.original_language + ".png'>";
+                break;
+             default: return film.original_language;
+
+         }
      }// fine 'lingua'
   } // var recupero_risultati
     var card_generata = template_function(recupero_risultati);
